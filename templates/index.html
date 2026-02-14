@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GitHub Profile Analyzer</title>
+</head>
+<body>
+    <h2>GitHub Profile Analyzer</h2>
+
+    <form method="POST">
+        <input type="text" name="username" placeholder="Enter GitHub username" required>
+        <button type="submit">Analyze</button>
+    </form>
+
+    <br>
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    {% if user %}
+        <img src="{{ user.avatar }}" width="120"><br><br>
+        <strong>Name:</strong> {{ user.name }} <br>
+        <strong>Bio:</strong> {{ user.bio }} <br>
+        <strong>Public Repos:</strong> {{ user.repos }} <br>
+        <strong>Followers:</strong> {{ user.followers }} <br>
+        <strong>Following:</strong> {{ user.following }} <br>
+        <strong>Account Created:</strong> {{ user.created_at }} <br>
+        <br>
+        <a href="{{ user.profile_url }}" target="_blank">View GitHub Profile</a>
+    {% endif %}
+
+</body>
+</html>
